@@ -1,2 +1,6 @@
-# ehcl.kangwon
-Environmental Health Chemistry Laboratory
+# EHCL 연구실 홈페이지 초안
+
+- `index.html`을 브라우저에서 열면 홈페이지 미리보기를 볼 수 있습니다.
+- 연구실의 공식 연구 내용, 구성원, 논문, 연락처를 확인해 예시 문구를 수정하세요.
+- GitHub Pages 무료 배포 방법은 ChatGPT 안내를 따라 진행하세요.
+- 이 사이트는 정적 홈페이지입니다. 직접 글을 올리는 관리자 게시판은 포함하지 않습니다.
