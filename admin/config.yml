@@ -1,7 +1,7 @@
 
 backend:
   name: turbo-github
-  turbo_site_id: "여기에_SITE_ID_입력"
+  turbo_site_id: "62031f85-ffc1-4675-80fb-849e5b25780a"
   branch: main
 
 site_url: "https://zwon03.github.io/ehcl.kangwon"
