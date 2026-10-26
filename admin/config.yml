@@ -1,0 +1,54 @@
+
+backend:
+  name: turbo-github
+  turbo_site_id: "여기에_SITE_ID_입력"
+  branch: main
+
+site_url: "https://zwon03.github.io/ehcl.kangwon"
+media_folder: "images/uploads"
+public_folder: "/ehcl.kangwon/images/uploads"
+
+locale: "ko"
+
+collections:
+  - name: "people"
+    label: "구성원"
+    folder: "content/people"
+    create: true
+    extension: "md"
+    format: "frontmatter"
+    slug: "{{slug}}"
+    fields:
+      - { label: "이름", name: "title", widget: "string" }
+      - { label: "직위", name: "position", widget: "string" }
+      - { label: "연구 분야", name: "research", widget: "string" }
+      - { label: "사진", name: "photo", widget: "image", required: false }
+      - { label: "소개", name: "body", widget: "markdown" }
+
+  - name: "publications"
+    label: "논문 및 연구 실적"
+    folder: "content/publications"
+    create: true
+    extension: "md"
+    format: "frontmatter"
+    slug: "{{slug}}"
+    fields:
+      - { label: "논문 제목", name: "title", widget: "string" }
+      - { label: "발표 연도", name: "year", widget: "number" }
+      - { label: "저자", name: "authors", widget: "string" }
+      - { label: "학술지", name: "journal", widget: "string" }
+      - { label: "DOI 또는 링크", name: "link", widget: "string", required: false }
+      - { label: "상세 내용", name: "body", widget: "markdown", required: false }
+
+  - name: "activities"
+    label: "연구 활동"
+    folder: "content/activities"
+    create: true
+    extension: "md"
+    format: "frontmatter"
+    slug: "{{slug}}"
+    fields:
+      - { label: "활동 제목", name: "title", widget: "string" }
+      - { label: "날짜", name: "date", widget: "datetime" }
+      - { label: "사진", name: "photo", widget: "image", required: false }
+      - { label: "활동 내용", name: "body", widget: "markdown" }
