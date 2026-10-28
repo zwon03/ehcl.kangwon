@@ -362,11 +362,6 @@
         <div id="careerList" class="career-list"></div>
       </div>
 
-      <div class="detail-section">
-        <h3>Publications</h3>
-        <div id="professorPublications" class="publication-list"></div>
-      </div>
-    </div>
   </section>
 
   <!-- Current Members -->
@@ -426,8 +421,6 @@ const escapeHTML = value =>
 
 const professorProfile = document.getElementById('professorProfile');
 const careerList = document.getElementById('careerList');
-const professorPublications =
-  document.getElementById('professorPublications');
 const studentList = document.getElementById('studentList');
 
 let allPeople = [];
@@ -494,41 +487,6 @@ function renderProfessor(person) {
     : '<p class="publication-meta">등록된 경력이 없습니다.</p>';
 }
 
-// 논문 목록 표시
-function renderPublications(publications) {
-  const sorted = [...publications].sort(
-    (a, b) => Number(b.year || 0) - Number(a.year || 0)
-  );
-
-  professorPublications.innerHTML = sorted.length
-    ? sorted.map(paper => {
-        const title = escapeHTML(paper.title || '제목 없음');
-        const authors = escapeHTML(paper.authors || '');
-        const year = escapeHTML(paper.year || '');
-        const journal = escapeHTML(paper.journal || '');
-        const link = String(paper.link || '');
-
-        const safeLink = /^https?:\/\//i.test(link)
-          ? link
-          : '';
-
-        return `
-          <article class="publication-item">
-            <span class="publication-title">
-              ${safeLink
-                ? `<a href="${escapeHTML(safeLink)}"
-                     target="_blank" rel="noopener noreferrer">${title}</a>`
-                : title}
-            </span>
-            <div class="publication-meta">
-              ${authors}${authors && year ? ', ' : ''}${year}
-              ${journal ? '. ' + journal : ''}
-            </div>
-          </article>
-        `;
-      }).join('')
-    : '<p class="publication-meta">등록된 논문이 없습니다.</p>';
-}
 
 // 학생 목록 표시
 function renderStudents(category) {
@@ -600,23 +558,6 @@ fetch('./data/people.json')
     careerList.innerHTML = '';
     studentList.innerHTML =
       '<p class="empty-message">학생 정보를 불러오지 못했습니다.</p>';
-  });
-
-// 논문 데이터는 구성원 데이터와 별도로 불러옵니다.
-fetch('./data/publications.json')
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('publications.json을 불러오지 못했습니다.');
-    }
-    return response.json();
-  })
-  .then(publications => {
-    renderPublications(Array.isArray(publications) ? publications : []);
-  })
-  .catch(error => {
-    console.error('논문 데이터 오류:', error);
-    professorPublications.innerHTML =
-      '<p class="publication-meta">논문 데이터를 불러오지 못했습니다.</p>';
   });
 
 </script>
