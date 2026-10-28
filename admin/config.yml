@@ -11,7 +11,7 @@ locale: "ko"
 
 collections:
   - name: "people"
-    label: "구성원"
+    label: "구성원(People)"
     folder: "content/people"
     create: true
     extension: "md"
@@ -25,7 +25,7 @@ collections:
       - { label: "소개", name: "body", widget: "markdown" }
 
   - name: "publications"
-    label: "논문 및 연구 실적"
+    label: "논문(Publications)"
     folder: "content/publications"
     create: true
     extension: "md"
@@ -40,7 +40,7 @@ collections:
       - { label: "상세 내용", name: "body", widget: "markdown", required: false }
 
   - name: "activities"
-    label: "연구 활동"
+    label: "연구실 활동(Activities)"
     folder: "content/activities"
     create: true
     extension: "md"
