@@ -10,6 +10,7 @@ public_folder: "/ehcl.kangwon/images/uploads"
 locale: "ko"
 
 collections:
+ 
   - name: "people"
     label: "구성원(People)"
     folder: "content/people"
@@ -19,10 +20,29 @@ collections:
     slug: "{{slug}}"
     fields:
       - { label: "이름", name: "title", widget: "string" }
-      - { label: "구분", name: "category", widget: "select", options: [{ label: "교수님", value: "professor" }, { label: "박사과정", value: "phd" }, { label: "석사과정", value: "masters" }, { label: "학부생", value: "undergraduate" }] }
+
+      - label: "구분"
+        name: "category"
+        widget: "select"
+        options:
+          - { label: "교수님", value: "professor" }
+          - { label: "박사과정", value: "phd" }
+          - { label: "석사과정", value: "masters" }
+          - { label: "학부생", value: "undergraduate" }
+          - { label: "졸업생", value: "alumni" }
+
       - { label: "직위 또는 학위 과정", name: "position", widget: "string", required: false }
       - { label: "연구 분야", name: "research", widget: "string", required: false }
       - { label: "사진", name: "photo", widget: "image", required: false }
+
+      - label: "경력(Career)"
+        name: "career"
+        widget: "list"
+        required: false
+        fields:
+          - { label: "연도", name: "year", widget: "string", required: false }
+          - { label: "경력 내용", name: "description", widget: "string" }
+
       - { label: "소개", name: "body", widget: "markdown", required: false }
 
 
