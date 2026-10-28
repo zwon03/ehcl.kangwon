@@ -424,11 +424,6 @@
       mastersList.innerHTML = mastersStudents.map(createPersonCard).join('');
       undergraduateList.innerHTML = undergraduateStudents.map(createPersonCard).join('');
 
-      // 학생 과정에 등록된 구성원이 없으면 해당 그룹 숨기기
-      document.querySelectorAll('.student-group').forEach(group => {
-        const list = group.querySelector('.people-list');
-        group.hidden = !list.children.length;
-      });
 
       // 왼쪽 메뉴 클릭
       const tabs = document.querySelectorAll('.people-tab');
