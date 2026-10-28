@@ -19,10 +19,12 @@ collections:
     slug: "{{slug}}"
     fields:
       - { label: "이름", name: "title", widget: "string" }
-      - { label: "직위", name: "position", widget: "string" }
-      - { label: "연구 분야", name: "research", widget: "string" }
+      - { label: "구분", name: "category", widget: "select", options: [{ label: "교수님", value: "professor" }, { label: "박사과정", value: "phd" }, { label: "석사과정", value: "masters" }, { label: "학부생", value: "undergraduate" }] }
+      - { label: "직위 또는 학위 과정", name: "position", widget: "string", required: false }
+      - { label: "연구 분야", name: "research", widget: "string", required: false }
       - { label: "사진", name: "photo", widget: "image", required: false }
-      - { label: "소개", name: "body", widget: "markdown" }
+      - { label: "소개", name: "body", widget: "markdown", required: false }
+
 
   - name: "publications"
     label: "논문(Publications)"
