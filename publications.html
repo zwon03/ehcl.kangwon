@@ -180,89 +180,89 @@
     toggle.setAttribute('aria-expanded', 'false');
   }));
   
-  // 논문 데이터 불러오기
-  fetch('./data/publications.json')
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('논문 데이터를 불러오지 못했습니다.');
-      }
-      return response.json();
-    })
-    .then(publications => {
-      const container = document.getElementById('publicationList');
+// 논문 데이터 불러오기
+fetch('./data/publications.json')
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('논문 데이터를 불러오지 못했습니다.');
+    }
+    return response.json();
+  })
+  .then(publications => {
+    const container = document.getElementById('publicationList');
 
-      if (!publications.length) {
-        container.innerHTML = '<p>등록된 논문이 없습니다.</p>';
-        return;
-      }
+    // 논문이 없는 경우
+    if (!Array.isArray(publications) || publications.length === 0) {
+      container.innerHTML = '<p>등록된 논문이 없습니다.</p>';
+      return;
+    }
 
-      // 오래된 논문부터 정렬
-      publications.sort((a, b) => {
-        return Number(a.year || 0) - Number(b.year || 0);
-      });
-
-      let number = 0;
-      let currentYear = '';
-
-      container.innerHTML = '<div class="publication-list">' +
-        publications.map(publication => {
-          const year = publication.year || '연도 미상';
-
-          // 연도가 바뀌면 연도 제목 표시
-          let yearHeading = '';
-          if (year !== currentYear) {
-            currentYear = year;
-            yearHeading = `
-              <h3 class="publication-year">${year}</h3>
-            `;
-          }
-
-          number++;
-
-          const title = publication.title || '';
-          const authors = publication.authors || '';
-          const journal = publication.journal || '';
-          const volume = publication.volume || '';
-          const issue = publication.issue || '';
-          const pages = publication.pages || '';
-          const doi = publication.doi || '';
-
-          const journalInfo = [
-            journal,
-            volume ? `Vol. ${volume}` : '',
-            issue ? `No. ${issue}` : '',
-            pages ? `pp. ${pages}` : '',
-            year
-          ].filter(Boolean).join(', ');
-
-          const doiLink = doi
-            ? `<a class="publication-doi"
-                 href="${doi.startsWith('http') ? doi : 'https://doi.org/' + doi}"
-                 target="_blank"
-                 rel="noopener noreferrer">DOI ↗</a>`
-            : '';
-
-          return `
-            ${yearHeading}
-            <article class="publication-item">
-              <div class="publication-number">${number}.</div>
-
-              <div>
-                <h4 class="publication-title">${title}</h4>
-                <p class="publication-authors">${authors}</p>
-                <p class="publication-journal">${journalInfo}</p>
-                ${doiLink}
-              </div>
-            </article>
-          `;
-        }).join('') +
-      '</div>';
-    })
-    .catch(error => {
-      console.error(error);
-      document.getElementById('publicationList').innerHTML =
-        '<p>논문 목록을 불러오지 못했습니다.</p>';
+    // 오래된 논문부터 정렬
+    publications.sort((a, b) => {
+      return Number(a.year || 0) - Number(b.year || 0);
     });
+
+    let number = 0;
+    let currentYear = '';
+
+    let html = '<div class="publication-list">';
+
+    publications.forEach(publication => {
+      const year = publication.year || '연도 미상';
+
+      // 연도가 바뀌면 연도 제목 표시
+      if (year !== currentYear) {
+        currentYear = year;
+        html += `<h3 class="publication-year">${year}</h3>`;
+      }
+
+      number++;
+
+      // 논문 정보
+      const title = publication.title || '';
+      const authors = publication.authors || '';
+      const journal = publication.journal || '';
+      const link = publication.link || '';
+
+      html += `
+        <article class="publication-item">
+          <div class="publication-number">${number}.</div>
+
+          <div>
+            <h4 class="publication-title">${title}</h4>
+
+            <p class="publication-authors">
+              ${authors}
+            </p>
+
+            <p class="publication-journal">
+              ${journal}
+            </p>
+
+            ${link ? `
+              <a class="publication-doi"
+                 href="${link}"
+                 target="_blank"
+                 rel="noopener noreferrer">
+                논문 링크 ↗
+              </a>
+            ` : ''}
+          </div>
+        </article>
+      `;
+    });
+
+    html += '</div>';
+
+    // 페이지에 논문 목록 표시
+    container.innerHTML = html;
+  })
+  .catch(error => {
+    console.error(error);
+
+    document.getElementById('publicationList').innerHTML =
+      '<p>논문 목록을 불러오지 못했습니다.</p>';
+  });
 </script>
 </body>
 </html>
