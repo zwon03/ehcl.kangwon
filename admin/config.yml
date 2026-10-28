@@ -48,7 +48,7 @@ collections:
     slug: "{{slug}}"
     fields:
       - { label: "활동 제목", name: "title", widget: "string" }
-      - { label: "날짜", name: "date", widget: "datetime" }
+      - { label: "날짜", name: "date", widget: "date" }
       - { label: "사진", name: "image", widget: "image", required: false }
       - { label: "활동 내용", name: "body", widget: "markdown", required: false }
       - { label: "최근 소식에 표시", name: "show_in_news", widget: "boolean", default: false, required: false }
