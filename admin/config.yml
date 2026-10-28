@@ -1,4 +1,3 @@
-
 backend:
   name: turbo-github
   turbo_site_id: "62031f85-ffc1-4675-80fb-849e5b25780a"
@@ -40,17 +39,16 @@ collections:
       - { label: "DOI 또는 링크", name: "link", widget: "string", required: false }
       - { label: "상세 내용", name: "body", widget: "markdown", required: false }
 
-  
-- name: "activities"
-  label: "연구 활동"
-  folder: "content/activities"
-  create: true
-  extension: "md"
-  format: "frontmatter"
-  slug: "{{slug}}"
-  fields:
-    - { label: "활동 제목", name: "title", widget: "string" }
-    - { label: "날짜", name: "date", widget: "datetime" }
-    - { label: "사진", name: "image", widget: "image", required: false }
-    - { label: "활동 내용", name: "body", widget: "markdown", required: false }
-    - { label: "최근 소식에 표시", name: "show_in_news", widget: "boolean", default: false, required: false }
+  - name: "activities"
+    label: "연구 활동"
+    folder: "content/activities"
+    create: true
+    extension: "md"
+    format: "frontmatter"
+    slug: "{{slug}}"
+    fields:
+      - { label: "활동 제목", name: "title", widget: "string" }
+      - { label: "날짜", name: "date", widget: "datetime" }
+      - { label: "사진", name: "image", widget: "image", required: false }
+      - { label: "활동 내용", name: "body", widget: "markdown", required: false }
+      - { label: "최근 소식에 표시", name: "show_in_news", widget: "boolean", default: false, required: false }
