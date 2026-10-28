@@ -426,23 +426,26 @@
 
 
       // 왼쪽 메뉴 클릭
-      const tabs = document.querySelectorAll('.people-tab');
-      const professorPanel = document.getElementById('professorPanel');
-      const studentsPanel = document.getElementById('studentsPanel');
+      const toggle = document.getElementById('menuToggle');
+      const nav = document.getElementById('mainNav');
 
-      tabs.forEach(tab => {
-        tab.addEventListener('click', () => {
-          const selectedTab = tab.dataset.tab;
+      // Professor / Students 메뉴 전환
+const tabs = document.querySelectorAll('.people-tab');
+const professorPanel = document.getElementById('professorPanel');
+const studentsPanel = document.getElementById('studentsPanel');
 
-          tabs.forEach(item => {
-            item.classList.toggle('active', item === tab);
-          });
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    const selectedTab = tab.dataset.tab;
 
-          professorPanel.hidden = selectedTab !== 'professor';
-          studentsPanel.hidden = selectedTab !== 'students';
-        });
-      });
+    tabs.forEach(item => {
+      item.classList.toggle('active', item === tab);
+    });
 
+    professorPanel.hidden = selectedTab !== 'professor';
+    studentsPanel.hidden = selectedTab !== 'students';
+  });
+});
       // 등록된 구성원이 없는 경우
       if (!people.length) {
         professorList.innerHTML = '<p>등록된 구성원이 없습니다.</p>';
