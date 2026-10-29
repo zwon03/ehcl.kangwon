@@ -555,12 +555,16 @@ async function renderNews() {
       return;
     }
 
-    container.innerHTML = recentItems.map(item => `
-      <article class="news-item">
-        <time class="news-date">${escapeHTML(item.date || '')}</time>
-        <span class="news-title">${escapeHTML(item.title || '제목 없음')}</span>
-      </article>
-    `).join('');
+    
+container.innerHTML = recentItems.map(item => `
+  <article class="news-item">
+    <time class="news-date">${escapeHTML(item.date || '')}</time>
+    <a class="news-title"
+      href="news-detail.html?slug=${encodeURIComponent(item.slug || item.title || '')}">
+      ${escapeHTML(item.title || '제목 없음')}
+    </a>
+  </article>
+`).join('');
 
   } catch (error) {
     console.error('NEWS 불러오기 오류:', error);
