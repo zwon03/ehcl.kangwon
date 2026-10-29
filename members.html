@@ -111,8 +111,30 @@ nav a.active {
     section{padding:76px 0}.grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:58px;align-items:start}.kicker{color:var(--teal);font-size:.76rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase}h2{margin:8px 0 12px;color:var(--navy);font-size:clamp(1.8rem,3vw,2.5rem);line-height:1.25;letter-spacing:-.025em}.lead{color:var(--muted);margin:0}.statement{background:var(--paper);border-left:4px solid var(--teal);padding:26px;border-radius:0 12px 12px 0;color:var(--navy);font-size:1.15rem;font-weight:700}.copy p{color:var(--muted);margin-top:20px}.note{margin-top:20px;padding:14px 16px;border:1px solid #e6d9b4;border-radius:9px;color:#79643a;background:#fffaf0;font-size:.85rem}
     .values{background:var(--paper)}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:34px}.card{padding:25px;border:1px solid var(--line);border-radius:13px;background:#fff}.num{color:#79a59b;font-size:.75rem;font-weight:800;letter-spacing:.12em}.card h3{color:var(--navy);font-size:1.05rem;margin:12px 0 7px}.card p{margin:0;color:var(--muted);font-size:.9rem}.back{display:inline-flex;margin-top:26px;padding:11px 16px;border:1px solid var(--line);border-radius:8px;color:var(--navy);font-weight:700;font-size:.9rem}.back:hover{background:var(--paper)}
     footer{padding:24px 0;background:#0c2232;color:#b9cbd1;font-size:.8rem}footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
-    @media(max-width:820px){.menu-toggle{display:block}nav{display:none;position:absolute;left:0;right:0;top:82px;padding:18px 24px 24px;background:#fff;border-bottom:1px solid var(--line);flex-direction:column;align-items:flex-start;gap:16px}nav.open{display:flex}.grid{grid-template-columns:1fr;gap:22px}.cards{grid-template-columns:1fr}.page-hero{padding:64px 0}.page-hero h1{font-size:2.55rem}section{padding:58px 0}}
+   
 @media (max-width: 820px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  nav {
+    display: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 82px;
+    padding: 18px 24px 24px;
+    background: #fff;
+    border-bottom: 1px solid var(--line);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  nav.open {
+    display: flex;
+  }
+
   .nav {
     gap: 12px;
   }
@@ -136,6 +158,27 @@ nav a.active {
 
   .brand small {
     font-size: 0.68rem;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  .page-hero {
+    padding: 64px 0;
+  }
+
+  .page-hero h1 {
+    font-size: 2.55rem;
+  }
+
+  section {
+    padding: 58px 0;
   }
 }
 
@@ -174,6 +217,7 @@ nav a.active {
     font-size: 0.8rem;
   }
 }
+
     
 
 /* 공통 제목 */
@@ -493,11 +537,11 @@ nav a.active {
         <p>교수님 정보를 불러오는 중입니다.</p>
       </div>
 
-      <div class="detail-section">
+           <div class="detail-section">
         <h3>Career</h3>
         <div id="careerList" class="career-list"></div>
       </div>
-
+    </div>
   </section>
 
   <!-- Current Members -->
