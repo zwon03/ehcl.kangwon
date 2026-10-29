@@ -64,64 +64,68 @@
       gap: 24px;
     }
 
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      color: var(--navy);
-    }
+   
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: var(--navy);
+  text-decoration: none;
+  flex-shrink: 0;
+}
 
-  .mark {
-  width: 64px;
-  height: 44px;
+.mark {
+  width: 100px;
+  height: 62px;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
   overflow: hidden;
   background: transparent;
   border-radius: 0;
-  flex-shrink: 0;
 }
 
 .mark img {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  object-position: left center;
   display: block;
 }
-  
 
-    .brand-text {
-      display: flex;
-      flex-direction: column;
-      gap: 3px;
-    }
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
 
-    .brand-line {
-      display: flex;
-      align-items: baseline;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
+.brand-line {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 5px;
+}
 
-    .brand strong {
-      display: block;
-      font-size: 1.1rem;
-      letter-spacing: .08em;
-    }
+.brand strong {
+  display: inline;
+  font-size: 1.2rem;
+  letter-spacing: 0;
+  font-weight: 800;
+}
 
-    .brand-korean {
-      font-size: .92rem;
-      font-weight: 600;
-      color: #203b3b;
-    }
+.brand-korean {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--navy);
+}
 
-    .brand small {
-      display: block;
-      color: var(--muted);
-      font-size: .68rem;
-    }
+.brand small {
+  display: block;
+  color: var(--muted);
+  font-size: 0.82rem;
+  line-height: 1.4;
+}
+
 
     nav {
       display: flex;
@@ -646,12 +650,13 @@
 
 <body>
 
+
 <header>
   <div class="wrap nav">
     <a class="brand" href="#home" aria-label="EHCL 홈">
-      <a href="index.html" class="mark">
-  <img src="kangwon-logo.png.png" alt="강원대학교 로고">
-</a>
+      <span class="mark">
+        <img src="kangwon-logo.png.png" alt="강원대학교 로고">
+      </span>
 
       <span class="brand-text">
         <span class="brand-line">
@@ -668,6 +673,7 @@
       aria-expanded="false"
       aria-controls="mainNav"
     >
+
       메뉴 ☰
     </button>
 
