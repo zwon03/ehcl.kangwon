@@ -76,6 +76,24 @@
   font-size: 1rem;
   line-height: 1.5;
 }
+    /* 게시글 상세 페이지 링크 */
+.news-item a,
+.activity-card a {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.news-item a:hover .news-title,
+.activity-card a:hover h3 {
+  color: var(--teal);
+}
+
+.activity-card a:focus-visible,
+.news-item a:focus-visible {
+  outline: 2px solid var(--teal);
+  outline-offset: 4px;
+}
 
 .activity-info p {
   margin: 0;
@@ -275,14 +293,14 @@ fetch('./data/activities.json')
     const recentContainer = document.getElementById('recentNews');
 
     if (recentItems.length === 0) {
-      recentContainer.innerHTML = '<p>등록된 최근 소식이 없습니다.</p>';
-    } else {
       recentContainer.innerHTML = recentItems.map(item => `
-        <article class="news-item">
-          <time class="news-date">${item.date || ''}</time>
-          <div class="news-title">${item.title || ''}</div>
-        </article>
-      `).join('');
+  <article class="news-item">
+    <time class="news-date">${item.date || ''}</time>
+    <a class="news-title" href="activity-detail.html?slug=${encodeURIComponent(item.slug || item.title || '')}">
+      ${item.title || ''}
+    </a>
+  </article>
+`).join('');
     }
 
     // 사진이 있는 연구실 소식만 갤러리에 표시
@@ -304,21 +322,25 @@ fetch('./data/activities.json')
         return;
       }
 
-      gallery.innerHTML = pageItems.map(item => `
-        <article class="activity-card">
-          <img
-            class="activity-photo"
-            src="${item.image}"
-            alt="${item.title || '연구실 활동 사진'}"
-            loading="lazy"
-          >
-          <div class="activity-info">
-            <time class="activity-date">${item.date || ''}</time>
-            <h3>${item.title || ''}</h3>
-            <p>${item.body || ''}</p>
-          </div>
-        </article>
-      `).join('');
+     gallery.innerHTML = pageItems.map(item => `
+  <article class="activity-card">
+    <a href="activity-detail.html?slug=${encodeURIComponent(item.slug || item.title || '')}">
+      ${item.image ? `
+        <img
+          class="activity-photo"
+          src="${item.image}"
+          alt="${item.title || '연구실 활동 사진'}"
+          loading="lazy"
+        >
+      ` : ''}
+      <div class="activity-info">
+        <time class="activity-date">${item.date || ''}</time>
+        <h3>${item.title || ''}</h3>
+        <p>${item.body || ''}</p>
+      </div>
+    </a>
+  </article>
+`).join('');
 
       if (totalPages <= 1) {
         pagination.innerHTML = '';
