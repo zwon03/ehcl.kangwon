@@ -14,6 +14,22 @@
     "body": "ㅇㅇㅇㅇ"
   },
   {
+    "title": "추교진",
+    "category": "professor",
+    "position": "메일",
+    "career": [
+      {
+        "year": "ㅇㅇㅇ",
+        "description": "ㅇㅇㅇ"
+      },
+      {
+        "year": "ㅇㅇㅇ",
+        "description": "ㅇㅇㅇ"
+      }
+    ],
+    "body": "ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ\n\nㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ\n\nㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ"
+  },
+  {
     "title": "김지원",
     "category": "undergraduate",
     "position": "wldnjs03@kangwon.ac.kr",
