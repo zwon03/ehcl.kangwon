@@ -173,6 +173,36 @@
   cursor: default;
 }
 
+/* 논문 정렬 버튼 */
+.publication-sort {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.sort-button {
+  padding: 8px 16px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: #fff;
+  color: var(--navy);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.sort-button:hover {
+  border-color: var(--teal);
+  color: var(--teal);
+}
+
+.sort-button.active {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: #fff;
+}
+
 </style>
 </head>
 <body>
@@ -222,6 +252,19 @@
       <p>논문 목록을 불러오는 중입니다.</p>
     </div>
 
+<div class="publication-sort">
+  <button type="button" class="sort-button active" data-sort="newest">
+    최신순
+  </button>
+  <button type="button" class="sort-button" data-sort="oldest">
+    오래된순
+  </button>
+</div>
+
+<div id="publicationList">
+  <p>논문 목록을 불러오는 중입니다.</p>
+</div>
+
     <a class="back" href="index.html">← 메인 홈페이지로 돌아가기</a>
   </div>
 </section>
@@ -257,10 +300,24 @@
         return;
       }
 
-      // 오래된 논문부터 정렬
-      publications.sort((a, b) => {
-        return Number(a.year || 0) - Number(b.year || 0);
-      });
+    
+      // 정렬 방식
+      let sortOrder = 'newest';
+
+      // 논문 정렬 함수
+      function getSortedPublications() {
+        return [...publications].sort((a, b) => {
+          const yearA = Number(a.year || 0);
+          const yearB = Number(b.year || 0);
+
+          if (sortOrder === 'newest') {
+            return yearB - yearA;
+          }
+
+          return yearA - yearB;
+        });
+      }
+
 
       // 페이지당 논문 수
       const itemsPerPage = 10;
@@ -276,8 +333,8 @@
         const startIndex = (currentPage - 1) * itemsPerPage;
         const endIndex = startIndex + itemsPerPage;
 
-        const pagePublications = publications.slice(startIndex, endIndex);
-
+       const sortedPublications = getSortedPublications();
+       const pagePublications = sortedPublications.slice(startIndex, endIndex);
         let number = startIndex;
         let currentYear = '';
 
@@ -388,8 +445,26 @@
         });
       };
 
+
+      // 정렬 버튼 클릭
+      document.querySelectorAll('.sort-button').forEach(button => {
+        button.addEventListener('click', () => {
+          sortOrder = button.dataset.sort;
+          currentPage = 1;
+
+          // 버튼 활성화 상태 변경
+          document.querySelectorAll('.sort-button').forEach(item => {
+            item.classList.toggle('active', item === button);
+          });
+
+          // 논문 목록 다시 표시
+          renderPublications();
+        });
+      });
+
       // 첫 페이지 표시
       renderPublications();
+
     })
     .catch(error => {
       console.error(error);
