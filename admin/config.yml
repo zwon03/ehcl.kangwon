@@ -89,4 +89,5 @@ collections:
       - { label: "날짜", name: "date", widget: "string", required: false }
       - { label: "사진", name: "image", widget: "image", required: false }
       - { label: "소식 내용", name: "body", widget: "markdown", required: false }
+      - { label: "첨부파일", name: "attachment", widget: "file", required: false }
       - { label: "LAB NEWS에 표시", name: "show_in_news", widget: "boolean", default: false, required: false }
