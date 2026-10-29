@@ -32,7 +32,7 @@ jobs:
           import frontmatter
           from pathlib import Path
 
-          for name in ["people", "publications", "activities"]:
+          for name in ["people", "publications", "activities", "news"]:
               folder = Path("content") / name
               items = []
               if folder.exists():
